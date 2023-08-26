@@ -1,0 +1,56 @@
+@startuml
+class app.Shop {
+- Builder builder
++ Order getBrightOutfit()
++ Order getDarkOutfit()
+}
+interface app.Item {
+~ String name()
+~ String brand()
+~ float price()
+}
+enum app.Color {
++  WHITE
++  BLACK
++  RED
++  BLUE
+- float price
++ float getPrice()
+}
+class app.Cap {
+- Color color
++ String name()
++ String brand()
++ float price()
+}
+class app.OrderBuilder {
+- List<Item> items
++ void reset()
++ void addItem(Item)
++ Order getResult()
+}
+class app.Main {
++ {static} void main(String[])
+}
+class app.TShirt {
+- Color color
++ String name()
++ String brand()
++ float price()
+}
+interface app.Builder {
+~ void reset()
+~ void addItem(Item)
+~ Order getResult()
+}
+class app.Order {
+- List<Item> items
++ float getCost()
++ void showItems()
+}
+
+
+app.Item <|.. app.Cap
+app.Builder <|.. app.OrderBuilder
+app.Item <|.. app.TShirt
+@enduml
